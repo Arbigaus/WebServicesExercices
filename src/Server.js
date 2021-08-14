@@ -1,8 +1,8 @@
 import Express from 'express';
 import bodyParser from "body-parser";
 import { calcDates } from "./Dates"
-import {sortNumbers} from "./Numbers";
-import {convertToMimimi} from "./Mimimi";
+import { sortNumbers } from "./Numbers";
+import { convertToMimimi } from "./Mimimi";
 
 const app = Express()
 app.use(bodyParser.urlencoded({ extended: false }))

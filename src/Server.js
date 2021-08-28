@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import { calcDates } from "./Dates"
 import { sortNumbers } from "./Numbers";
 import { convertToMimimi } from "./Mimimi";
+import { createShop, getShopById, getAllShops } from "./Shops";
 
 const app = Express()
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -35,6 +36,27 @@ export class Server {
             let response = convertToMimimi(text)
 
             res.send(response)
+        })
+
+        app.post( '/createShop', async (req, res) => {
+            let { body } = req
+
+            let shop = createShop(body)
+
+            res.send(shop)
+        })
+
+        app.get('/getShops', async (req, res) => {
+            if (req.query.id === undefined || req.query.id === null) {
+                let allShops = await getAllShops()
+
+                res.send(allShops)
+                return
+            }
+            let { id } = req.query
+            let shop = await getShopById(id)
+
+            res.send(shop)
         })
     }
 }

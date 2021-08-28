@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) =>{
             validity:{
                 type: DataTypes.DATE
             },
+            amount: {
+                type: DataTypes.INTEGER
+            }
         },
         {
             tableName: "shops",
